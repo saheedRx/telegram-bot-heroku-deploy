@@ -4,4 +4,4 @@ tornado>=5.1
 cryptography
 python-telegram-bot
 beautifulsoup4
-python-2.7.18
+python==2.7.18
