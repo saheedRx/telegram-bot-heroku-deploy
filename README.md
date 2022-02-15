@@ -1,97 +1,80 @@
-# Intial Deploy to heroku
-Intially I was not able to push a simple bot to heroku, but yeah googling a lot made it work!
+Weeman - http server for phishing
+=================================
 
-## Very Initial Steps [NOOB Steps]
-1. Install Telegram :)
-2. Create a telegram bot by talking to [Bot Father](https://t.me/botfather)
-3. Install python in your computer, if you are on windows follow [this](https://www.python.org/downloads/windows/)
-4. Install git, follow [this](https://git-scm.com/download/win)
-5. Install Heroku account [here](https://signup.heroku.com/login)
-6. Install Heroku CLI from [here](https://devcenter.heroku.com/articles/heroku-cli)
-7. Install editor of your choice, I preffer [Atom](https://atom.io)
+![Weeman](https://raw.githubusercontent.com/Hypsurus/weeman/master/core/weeman12.png)
 
-### Step 0 [Optional]:
+DISCLAIMER
+==========
 
-- Just git clone this repository and start working by editing the code
-   ```shell
-   git clone https://github.com/AnshumanFauzdar/telegram-bot-heroku-deploy.git
-   cd telegram-bot-heroku-deploy
-- Or follow steps below!   
-   
-### Step 1:
+Usage of Weeman for attacking targets without prior mutual consent is illegal.
+Weeman developer not responsible to any damage caused by Weeman.
 
-- Create your bot like we have bot.py and write any python code that is intially working on your local machine!
-### Step 2:
+About
+=====
 
-- Make a folder like *telegram-bot* and put *bot.py* in the folder
-### Step 3:
+HTTP server for phishing in python.
+Weeman has support for most of the (bigest) websites.
 
-- Make a blank python file named 
-   ```shell
-   __init__.py
-### Step 4:
+Usually you will want run Weeman with DNS spoof attack. (see dsniff, ettercap).
 
-- Make a *Procfile* this should be without any extension like .txt, you can go to view -> tick file name extensions and remove any extension
-   ```shell
-   worker: python bot.py
-- Write this in Procfile by using notepad or any editor of your choice! Here bot.py is your python code!
-### Step 5:
+Weeman will do the following steps:
+------------------------------------
 
-- Now we have to make a *requirements.txt* through which heroku will install the dependencies to make our bot work!
-- What to add in requirements.txt
-  - Mine looks like this:
-  ```shell
-  future>=0.16.0
-  certifi
-  tornado>=5.1
-  cryptography
-  python-telegram-bot
- 
- Add anything which you have included in the python code!
+1. Create fake html page.
+2. Wait for clients
+3. Grab the data (POST).
+4. Try to login the client to the original page :smiley:
 
-### Step 6:
-- Change directory to where you have made these files
-- now in git bash CLI, intialize a git
-  ```shell
-  git init
+Requirements
+============
+
+* Python <= 2.7.
+* Python BeautifulSoup 4
+
+Install BeautifulSoup
+---------------------
+
+* Archlinux        - sudo pacman -S python2-beautifulsoup4
+* Ubuntu/Linuxmint - sudo apt-get install python-bs4
+* For another OS:  - sudo pip install beautifulsoup4
+
+Platforms
+-----------
+
+* Linux (any)
+* Mac (Not tested)
+* Windows (Not tested)
+
+[!] If weeman runs on your platform (Mac/Windows), please let me know.
+
+Usage
+======
+
+Just type `help`
+
+Run server:
+-----------
+
+* For port 80 you need to run Weeman as root!
+
+* Host to clone (Ex: www.social-networks.local)
+> set url http://localhost
+
+* "<code><"form action = "TAKE THIS URL">"</code>(View the site source and take the URL)
+> set action_url http://localhost/sendlogin 
+
+* The port Weeman server will listen
+> set port 2020
+
+* Start the server
+> run
+
+The settings will be saved for the next time you run weeman.py.
+
+Get Weeman
+=============
+                git clone git://github.com/Hypsurus/weeman
   
-### Step 7:
-- Now install heroku CLI
-- Next
-  ```shell
-  heroku login
-  heroku create app_name
-- If you have already created app then select it:
-  ```shell
-  heroku git:remote -a app_name
-- Or else continue:
-  ```shell
-  git add -f bot.py Procfile requirements.txt __init__.py
-- ```shell
-  git commit -m "Added Files"
-- Push files to heroku:
-  ```shell
-  git push heroku master
-- If it is not working then try this one:
-   ```shell
-   git push heroku master --force
-### At this point your bot should be running, you can check by
--  ```shell
-    heroku ps
-If it is not running then we have to reset dynos:
-- ```shell
-  heroku ps:scale worker=0
-- ```shell
-  heroku ps:scale worker=1
-Now it should be running fine! Enjoy :)  
+Copyright 2015 (C) Hypsurus <hypsurus@mail.ru>.
 
-### If you are trying to lazy which you should not! (Deploying to Heroku)
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/AnshumanFauzdar/telegram-bot-heroku-deploy/blob/master)
-
-Choose App name and deploy!
-Follow from Step 7 and edit bot.py with your token!
-And finally deploy!
-
-### Want a video tutorial?
-- Check It [Here!](https://github.com/AnshumanFauzdar/telegram-bot-heroku-deploy/issues/1)
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
