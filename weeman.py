@@ -1,6 +1,15 @@
 import logging
-
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+
+import sys
+from core.misc import printt
+
+try:
+    from bs4 import BeautifulSoup as bs
+except ImportError:
+    printt(1, "Please install beautifulsoup 4 to continue ...")
+
+
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -63,24 +72,6 @@ def main():
     # start_polling() is non-blocking and will stop the bot gracefully.
     updater.idle()
 
-
-if __name__ == '__main__':
-    main()
-
-#!/usr/bin/env python2
-##
-## weeman - http server for phishing.
-##
-## Written by Hypsurus <hypsurus@mail.ru>
-##
-
-import sys
-from core.misc import printt
-
-try:
-    from bs4 import BeautifulSoup as bs
-except ImportError:
-    printt(1, "Please install beautifulsoup 4 to continue ...")
 
 def tests_pyver():
     if sys.version[:3] == "2.7" or "2" in sys.version[:3]:
